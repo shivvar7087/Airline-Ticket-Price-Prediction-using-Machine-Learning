@@ -5,10 +5,16 @@ __pycache__/
 *.so
 .Python
 
+# Large ML model artifacts (regenerate with: python train.py)
+*.joblib
+*.pkl
+*.h5
+
 # Jupyter
 .ipynb_checkpoints*/
 
 # Virtual Environments
+.venv/
 env/
 venv/
 ENV/
@@ -17,7 +23,10 @@ ENV/
 .DS_Store
 Thumbs.db
 
+# IDE
+.vscode/
+.idea/
+
 # Environment variables
 .env
 !.env.example
-
