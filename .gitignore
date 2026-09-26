@@ -9,6 +9,7 @@ __pycache__/
 .ipynb_checkpoints*/
 
 # Virtual Environments
+.venv/
 env/
 venv/
 ENV/
@@ -16,6 +17,10 @@ ENV/
 # OS Specific
 .DS_Store
 Thumbs.db
+
+# IDE
+.vscode/
+.idea/
 
 # Environment variables
 .env
