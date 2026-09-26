@@ -100,6 +100,19 @@ python tests/test_pipeline.py
 
 ---
 
+## Deploy the Frontend to Netlify
+
+This project includes `netlify.toml`, which configures Netlify to publish the `frontend/` directory. In Netlify:
+
+1. Select **Add new project** and import this repository.
+2. Leave the build command empty.
+3. Set the publish directory to `frontend` if Netlify does not detect it automatically.
+4. Deploy the site.
+
+The static frontend includes an offline estimation fallback and can run without the FastAPI backend. For live model predictions and metadata, deploy the `backend/` FastAPI application separately and update `API_BASE` in `frontend/script.js` to that public API URL. Configure the backend `CORS_ORIGINS` value with the deployed Netlify site URL.
+
+---
+
 ## 🔌 API Reference
 
 ### 1. Health Check
