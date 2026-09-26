@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkyFare - Airline Ticket Price Prediction</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="navbar">
+      <div class="brand">
+        <div class="logo-icon">✈️</div>
+        <div>
+          <h1 class="logo-title">SkyFare AI</h1>
+          <p class="logo-subtitle">Machine Learning Airline Price Predictor</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="main-grid">
+      <!-- Left: Flight Input Card -->
+      <section class="card form-card">
+        <div class="card-header">
+          <h2>Flight Itinerary Details</h2>
+          <p class="section-desc">Select your flight route, schedule, and preferences to estimate fare.</p>
+        </div>
+
+        <!-- Quick Route Presets -->
+        <div class="preset-section">
+          <span class="preset-label">Popular Routes:</span>
+          <div class="preset-chips">
+            <button type="button" class="chip" data-src="Delhi" data-dst="Cochin" data-airline="IndiGo" data-stops="1" data-dep="10:30" data-arr="14:15">DEL → COK</button>
+            <button type="button" class="chip" data-src="Banglore" data-dst="New Delhi" data-airline="Jet Airways" data-stops="1" data-dep="09:00" data-arr="18:30">BLR → DEL</button>
+            <button type="button" class="chip" data-src="Kolkata" data-dst="Banglore" data-airline="Air India" data-stops="2" data-dep="05:50" data-arr="13:15">CCU → BLR</button>
+            <button type="button" class="chip" data-src="Mumbai" data-dst="Hyderabad" data-airline="SpiceJet" data-stops="0" data-dep="13:00" data-arr="14:30">BOM → HYD</button>
+          </div>
+        </div>
+
+        <form id="prediction-form">
+          <!-- Source & Destination -->
+          <div class="form-row route-row">
+            <div class="form-group flex-1">
+              <label for="source">Source City (Departure)</label>
+              <select id="source" name="source" required>
+                <option value="Delhi">Delhi (DEL)</option>
+                <option value="Banglore">Banglore (BLR)</option>
+                <option value="Kolkata">Kolkata (CCU)</option>
+                <option value="Mumbai">Mumbai (BOM)</option>
+                <option value="Chennai">Chennai (MAA)</option>
+              </select>
+            </div>
+
+            <button type="button" id="btn-swap-route" class="swap-btn" title="Swap departure and destination">
+              ⇄
+            </button>
+
+            <div class="form-group flex-1">
+              <label for="destination">Destination City (Arrival)</label>
+              <select id="destination" name="destination" required>
+                <option value="Cochin">Cochin (COK)</option>
+                <option value="Banglore">Banglore (BLR)</option>
+                <option value="Delhi">Delhi (DEL)</option>
+                <option value="New Delhi">New Delhi (DEL-Prem)</option>
+                <option value="Hyderabad">Hyderabad (HYD)</option>
+                <option value="Kolkata">Kolkata (CCU)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Airline & Date of Journey -->
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label for="airline">Airline Carrier</label>
+              <select id="airline" name="airline" required>
+                <option value="IndiGo">IndiGo</option>
+                <option value="Air India">Air India</option>
+                <option value="Jet Airways">Jet Airways</option>
+                <option value="SpiceJet">SpiceJet</option>
+                <option value="Multiple carriers">Multiple carriers</option>
+                <option value="Vistara">Vistara</option>
+                <option value="Air Asia">Air Asia</option>
+                <option value="GoAir">GoAir</option>
+                <option value="Multiple carriers Premium economy">Multiple carriers Premium economy</option>
+                <option value="Jet Airways Business">Jet Airways Business</option>
+                <option value="Vistara Premium economy">Vistara Premium economy</option>
+                <option value="Trujet">Trujet</option>
+              </select>
+            </div>
+
+            <div class="form-group flex-1">
+              <label for="date-of-journey">Date of Journey</label>
+              <input type="date" id="date-of-journey" name="date_of_journey" required>
+            </div>
+          </div>
+
+          <!-- Dep Time & Arrival Time -->
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label for="dep-time">Departure Time</label>
+              <input type="time" id="dep-time" name="dep_time" value="09:25" required>
+            </div>
+
+            <div class="form-group flex-1">
+              <label for="arrival-time">Arrival Time</label>
+              <input type="time" id="arrival-time" name="arrival_time" value="14:15" required>
+            </div>
+          </div>
+
+          <!-- Total Stops & Ticket Class / Notes -->
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label for="total-stops">Number of Stops</label>
+              <select id="total-stops" name="total_stops" required>
+                <option value="0">Non-stop (Direct Flight)</option>
+                <option value="1" selected>1 Stop</option>
+                <option value="2">2 Stops</option>
+                <option value="3">3 Stops</option>
+                <option value="4">4 Stops</option>
+              </select>
+            </div>
+
+            <div class="form-group flex-1">
+              <label for="additional-info">Fare Type / Additional Info</label>
+              <select id="additional-info" name="additional_info">
+                <option value="No info" selected>Standard (No info)</option>
+                <option value="In-flight meal not included">In-flight meal not included</option>
+                <option value="No check-in baggage included">No check-in baggage included</option>
+                <option value="Business class">Business class</option>
+                <option value="1 Long layover">1 Long layover</option>
+                <option value="Change airports">Change airports</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="submit-wrap">
+            <button type="submit" id="btn-predict" class="btn-primary">
+              <span class="btn-text">⚡ Predict Ticket Price</span>
+              <span class="btn-spinner hidden"></span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Right: Prediction Result & Insights -->
+      <section class="results-column">
+        <!-- Live Prediction Card -->
+        <div class="card result-card" id="result-card">
+          <div class="result-header">
+            <span class="badge badge-success">ML Price Estimate</span>
+            <span class="model-tag" id="model-tag">Extra Trees Model</span>
+          </div>
+
+          <div class="price-display">
+            <div class="price-currency">₹</div>
+            <div class="price-number" id="predicted-price">5,870</div>
+          </div>
+          <p class="price-caption">Estimated one-way economy fare (incl. estimated taxes)</p>
+
+          <hr class="divider">
+
+          <div class="flight-itinerary-preview">
+            <div class="itinerary-node">
+              <span class="node-city" id="preview-source">Delhi</span>
+              <span class="node-time" id="preview-dep-time">10:30 AM</span>
+            </div>
+            <div class="itinerary-path">
+              <span class="path-duration" id="preview-duration">3h 45m</span>
+              <div class="path-line">
+                <span class="plane-icon">✈</span>
+              </div>
+              <span class="path-stops" id="preview-stops">1 Stop</span>
+            </div>
+            <div class="itinerary-node text-right">
+              <span class="node-city" id="preview-dest">Cochin</span>
+              <span class="node-time" id="preview-arr-time">02:15 PM</span>
+            </div>
+          </div>
+
+          <!-- Breakdown -->
+          <div class="fare-breakdown">
+            <h4>Estimated Fare Breakdown</h4>
+            <div class="breakdown-row">
+              <span>Base Airline Fare:</span>
+              <strong id="fare-base">₹ 4,696</strong>
+            </div>
+            <div class="breakdown-row">
+              <span>Airline Fuel Surcharge & Fees:</span>
+              <strong id="fare-fees">₹ 880</strong>
+            </div>
+            <div class="breakdown-row">
+              <span>Airport Charges & Taxes (GST):</span>
+              <strong id="fare-tax">₹ 294</strong>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Airline Ticket Price Prediction System • Powered by Scikit-Learn, FastAPI & Machine Learning</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

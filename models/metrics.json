@@ -1,0 +1,48 @@
+{
+    "best_model_name": "Extra Trees",
+    "test_r2_score": 0.9215,
+    "test_mae": 583.24,
+    "test_rmse": 1287.2,
+    "test_mape_percent": 6.76,
+    "all_models_comparison": {
+        "Linear Regression": {
+            "r2_score": 0.7032,
+            "mae": 1739.76,
+            "rmse": 2503.18,
+            "mape": 0.2096
+        },
+        "Ridge Regression": {
+            "r2_score": 0.7072,
+            "mae": 1736.77,
+            "rmse": 2486.1,
+            "mape": 0.2097
+        },
+        "HistGradientBoosting": {
+            "r2_score": 0.8883,
+            "mae": 896.24,
+            "rmse": 1535.5,
+            "mape": 0.1052
+        },
+        "Random Forest": {
+            "r2_score": 0.9115,
+            "mae": 621.23,
+            "rmse": 1366.85,
+            "mape": 0.0713
+        },
+        "Extra Trees": {
+            "r2_score": 0.9215,
+            "mae": 583.24,
+            "rmse": 1287.2,
+            "mape": 0.0676
+        }
+    },
+    "dataset_statistics": {
+        "total_records": 10681,
+        "train_records": 8544,
+        "test_records": 2137,
+        "price_min": 1759.0,
+        "price_max": 79512.0,
+        "price_mean": 9086.44,
+        "price_median": 8372.0
+    }
+}

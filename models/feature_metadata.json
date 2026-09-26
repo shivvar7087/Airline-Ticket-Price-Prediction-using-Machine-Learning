@@ -1,0 +1,96 @@
+{
+    "airlines": [
+        "Air Asia",
+        "Air India",
+        "GoAir",
+        "IndiGo",
+        "Jet Airways",
+        "Jet Airways Business",
+        "Multiple carriers",
+        "Multiple carriers Premium economy",
+        "SpiceJet",
+        "Trujet",
+        "Vistara",
+        "Vistara Premium economy"
+    ],
+    "sources": [
+        "Banglore",
+        "Chennai",
+        "Delhi",
+        "Kolkata",
+        "Mumbai"
+    ],
+    "destinations": [
+        "Banglore",
+        "Cochin",
+        "Delhi",
+        "Hyderabad",
+        "Kolkata",
+        "New Delhi"
+    ],
+    "additional_info_options": [
+        "1 Long layover",
+        "1 Short layover",
+        "2 Long layover",
+        "Business class",
+        "Change airports",
+        "In-flight meal not included",
+        "No check-in baggage included",
+        "No info",
+        "Red-eye flight"
+    ],
+    "total_stops_options": [
+        {
+            "label": "Non-stop (0 stops)",
+            "value": 0
+        },
+        {
+            "label": "1 Stop",
+            "value": 1
+        },
+        {
+            "label": "2 Stops",
+            "value": 2
+        },
+        {
+            "label": "3 Stops",
+            "value": 3
+        },
+        {
+            "label": "4 Stops",
+            "value": 4
+        }
+    ],
+    "cat_cols": [
+        "Airline",
+        "Source",
+        "Destination",
+        "Additional_Info"
+    ],
+    "num_cols": [
+        "Total_Stops",
+        "Journey_day",
+        "Journey_month",
+        "Journey_weekday",
+        "Dep_hour",
+        "Dep_min",
+        "Arrival_hour",
+        "Arrival_min",
+        "Duration_mins"
+    ],
+    "feature_cols": [
+        "Airline",
+        "Source",
+        "Destination",
+        "Additional_Info",
+        "Total_Stops",
+        "Journey_day",
+        "Journey_month",
+        "Journey_weekday",
+        "Dep_hour",
+        "Dep_min",
+        "Arrival_hour",
+        "Arrival_min",
+        "Duration_mins"
+    ]
+}
