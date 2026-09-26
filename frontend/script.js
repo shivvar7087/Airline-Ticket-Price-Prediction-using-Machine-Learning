@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
       stopsSelect.value = chip.dataset.stops;
       depTimeInput.value = chip.dataset.dep;
       arrTimeInput.value = chip.dataset.arr;
-      form.requestSubmit();
+      form.dispatchEvent(new Event('submit'));
     });
   });
 
@@ -246,6 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Initial update to populate preview cards (no API call on load)
-  updatePreviewOnly();
+  // Initial trigger to populate cards
+  form.dispatchEvent(new Event('submit'));
 });
+

@@ -37,6 +37,10 @@ app.add_middleware(
 FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
 MODELS_DIR = os.path.join(BASE_DIR, "models")
 
+# Mount static frontend files if directory exists
+if os.path.exists(FRONTEND_DIR):
+    app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
+
 @app.get("/", summary="Web UI Home")
 def read_root():
     """Serve the web application frontend."""
@@ -94,11 +98,7 @@ def predict_price(request: FlightPredictionRequest):
         logger.error(f"Prediction failed: {e}", exc_info=True)
         raise HTTPException(status_code=400, detail=str(e))
 
-# Mount frontend static files AFTER all routes (acts as fallback for CSS/JS/assets)
-# Mounting at "/" means /style.css -> frontend/style.css, /script.js -> frontend/script.js
-if os.path.exists(FRONTEND_DIR):
-    app.mount("/", StaticFiles(directory=FRONTEND_DIR), name="static")
-
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("backend.app:app", host=HOST, port=PORT, reload=DEBUG)
+
