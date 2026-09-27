@@ -34,7 +34,7 @@ Airline Ticket Price Prediction using Machine Learning/
 │   ├── config.py               # Zero-dependency .env environment loader
 │   ├── predict.py              # Modular inference engine and preprocessor
 │   ├── schemas.py              # Pydantic request and response models
-│   └── reuirements.py          # Backend requirements reference
+│   └── requirements.txt        # Backend deployment dependencies
 ├── frontend/
 │   ├── index.html              # Modern responsive flight booking UI
 │   ├── style.css               # Clean styling, cards, badge components
