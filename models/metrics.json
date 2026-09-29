@@ -18,10 +18,10 @@
             "mape": 0.2097
         },
         "HistGradientBoosting": {
-            "r2_score": 0.8883,
-            "mae": 896.24,
-            "rmse": 1535.5,
-            "mape": 0.1052
+            "r2_score": 0.8901,
+            "mae": 894.97,
+            "rmse": 1523.35,
+            "mape": 0.1049
         },
         "Random Forest": {
             "r2_score": 0.9115,
